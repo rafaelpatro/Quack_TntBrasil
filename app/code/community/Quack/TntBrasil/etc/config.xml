@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Este arquivo é parte do programa Quack TntBrasil
+ *
+ * Quack TntBrasil é um software livre; você pode redistribuí-lo e/ou
+ * modificá-lo dentro dos termos da Licença Pública Geral GNU como
+ * publicada pela Fundação do Software Livre (FSF); na versão 3 da
+ * Licença, ou (na sua opinião) qualquer versão.
+ *
+ * Este programa é distribuído na esperança de que possa ser útil,
+ * mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+ * a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a Licença
+ * Pública Geral GNU para maiores detalhes.
+ *
+ * Você deve ter recebido uma cópia da Licença Pública Geral GNU junto
+ * com este programa, Se não, veja <http://www.gnu.org/licenses/>.
+ *
+ * @category   Quack
+ * @package    Quack_TntBrasil
+ * @author     Rafael Patro <rafaelpatro@gmail.com>
+ * @copyright  Copyright (c) 2017 Rafael Patro (rafaelpatro@gmail.com)
+ * @license    http://www.gnu.org/licenses/gpl.txt
+ * @link       https://github.com/rafaelpatro/Quack_TntBrasil
+ */
+-->
+<config>
+    <modules>
+        <Quack_TntBrasil>
+            <version>0.0.1</version>
+        </Quack_TntBrasil>
+    </modules>
+    <global>
+        <models>
+            <tntbrasil>
+                <class>Quack_TntBrasil_Model</class>
+                <resourceModel>tntbrasil_mysql4</resourceModel>
+            </tntbrasil>
+            <tntbrasil_mysql4>
+                <class>Quack_TntBrasil_Model_Mysql4</class>
+                <entities>
+                </entities>
+            </tntbrasil_mysql4>
+        </models>
+        <blocks>
+            <tntbrasil>
+                <class>Quack_TntBrasil_Block</class>
+            </tntbrasil>
+        </blocks>
+        <helpers>
+        	<tntbrasil>
+        		<class>Quack_TntBrasil_Helper</class>
+        	</tntbrasil>
+        </helpers>
+        <sales>
+        	<shipping>
+        		<carriers>
+        			<tntbrasil>
+        				<class>Quack_TntBrasil_Model_Carrier</class>
+        			</tntbrasil>
+        		</carriers>
+        	</shipping>
+        </sales>
+        <cache>
+        	<types>
+        		<tntbrasil translate="label,description" module="tntbrasil">
+                    <label>Cotação de Frete TNT Mercúrio</label>
+                    <description>Banco de Cotações do módulo Quack TNT.</description>
+                    <tags>TNTBRASIL</tags>
+        		</tntbrasil>
+        	</types>
+        </cache>
+    </global>
+    <frontend>
+	    <translate>
+	        <modules>
+	            <tntbrasil>
+	                <files>
+	                    <default>Quack_TntBrasil.csv</default>
+	                </files>
+	            </tntbrasil>
+	        </modules>
+	    </translate>
+    </frontend>
+    <adminhtml>
+	    <translate>
+	        <modules>
+	            <tntbrasil>
+	                <files>
+	                    <default>Quack_TntBrasil.csv</default>
+	                </files>
+	            </tntbrasil>
+	        </modules>
+	    </translate>
+    </adminhtml>
+    <admin>
+    </admin>
+    <default>
+    	<carriers>
+    		<tntbrasil>
+    			<active>1</active>
+    			<model>Quack_TntBrasil_Model_Carrier</model>
+    			<title>TNT Mercúrio</title>
+    			<url>http://ws.tntbrasil.com.br/servicos/CalculoFrete?wsdl</url>
+    			<url_tracking>http://ws.tntbrasil.com.br/MercurioWS/services/Localizacao?wsdl</url_tracking>
+    			<handling_action>P</handling_action>
+    			<shipment_requesttype>0</shipment_requesttype>
+    			<allowed_methods>RNC,ANC</allowed_methods>
+    			<free_shipping_enable>0</free_shipping_enable>
+    			<posting_days_increment>1</posting_days_increment>
+    			<timeout>10</timeout>
+    		</tntbrasil>
+    	</carriers>
+    </default>
+</config>
