@@ -14,6 +14,8 @@ Desenvolvido a partir do manual de orientações técnicas, fornecido pela TNT B
 ## Benefícios
  - Realizar cotações de frete para todo o Brasil, em tempo real.
  - Permite configurar faixas de CEPs, para restringir as cotações a regiões específicas.
+ - Opção de cache das cotações.
+ - Permite configurar um limite de tempo para as cotações.
  - Extensão completamente gratuita, sem propagandas, ou versões pagas.
 
 ## Compatibilidade
