@@ -9,6 +9,7 @@ Desenvolvido a partir do manual de orientações técnicas, fornecido pela TNT B
  - [Pagamento Itaú Shopline](https://github.com/rafaelpatro/Quack_Itau)
  - [Pagamento Banco do Brasil](https://github.com/rafaelpatro/Quack_BB)
  - [Pagamento Cielo](https://github.com/rafaelpatro/Quack_Cielo)
+ - [Google Avaliações do Consumidor](https://github.com/rafaelpatro/google-customer-reviews)
 
 ## Benefícios
  - Realizar cotações de frete para todo o Brasil, em tempo real.
