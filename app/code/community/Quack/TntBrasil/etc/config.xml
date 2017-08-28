@@ -27,7 +27,7 @@
 <config>
     <modules>
         <Quack_TntBrasil>
-            <version>0.0.1</version>
+            <version>1.0.0</version>
         </Quack_TntBrasil>
     </modules>
     <global>
@@ -109,6 +109,11 @@
     			<free_shipping_enable>0</free_shipping_enable>
     			<posting_days_increment>1</posting_days_increment>
     			<timeout>10</timeout>
+    			<attribute_height>volume_altura</attribute_height>
+    			<attribute_width>volume_largura</attribute_width>
+    			<attribute_length>volume_comprimento</attribute_length>
+    			<attribute_fitsize>fit_size</attribute_fitsize>
+    			<attribute_postingdays>posting_days</attribute_postingdays>
     		</tntbrasil>
     	</carriers>
     </default>
