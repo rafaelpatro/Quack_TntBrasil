@@ -16,6 +16,7 @@ Desenvolvido a partir do manual de orientações técnicas, fornecido pela TNT B
  - Permite configurar faixas de CEPs, para restringir as cotações a regiões específicas.
  - Opção de cache das cotações.
  - Permite configurar um limite de tempo para as cotações.
+ - Permite rastrear a encomenda (requer cadastro da chave NFe nos comentários do pedido - 44 dígitos sem pontuação).
  - Extensão completamente gratuita, sem propagandas, ou versões pagas.
 
 ## Compatibilidade

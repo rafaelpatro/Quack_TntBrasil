@@ -31,4 +31,20 @@ class Quack_TntBrasil_Helper_Data extends Mage_Core_Helper_Abstract
         $postcode = str_pad($postcode, $length, '0', STR_PAD_LEFT);
         return $postcode;
     }
+    
+    public function getNfeByOrder(Mage_Sales_Model_Order $order)
+    {
+        $nfeKey = '00000000000000000000000000000000000000000000';
+        foreach ($order->getAllStatusHistory() as $status) {
+            if (preg_match('/([\d]{44})/', $status->getData('comment'), $match)) {
+                $nfeKey = array_pop($match);
+                break;
+            }
+        }
+        $nfeSerie = (int)substr($nfeKey, 22, 3);
+        $nfeNumber = (int)substr($nfeKey, 25, 9);
+        
+        return array($nfeKey, $nfeSerie, $nfeNumber);
+    }
+    
 }
