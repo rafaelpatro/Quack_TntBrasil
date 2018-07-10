@@ -109,11 +109,11 @@ class Quack_TntBrasil_Model_Carrier extends Quack_TntBrasil_Model_Abstract
             $error->setTracking($code);
             $error->setCarrier($this->getCarrierCode());
             $error->setCarrierTitle($this->getConfigData('title'));
-    
+            
+            list($nf, $nfSerie) = explode('-', $code);
             $params = new TntMercurio_LocalizacaoIn();
-            $params->nf = (int)$code;
-            $params->pedido = 0;
-            $params->nfSerie = '001';
+            $params->nf = (int)$nf;
+            $params->nfSerie = (int)$nfSerie;
             $params->cnpj = (string)$this->getConfigData('api_vat');
             $params->usuario = $this->getConfigData('api_login');
             $request = new TntMercurio_Localizacao(array(), $this->getConfigData('url_tracking'));
@@ -121,9 +121,9 @@ class Quack_TntBrasil_Model_Carrier extends Quack_TntBrasil_Model_Abstract
             try {
                 $response = $request->localizaMercadoria(new TntMercurio_LocalizaMercadoria($params));
                 Mage::log(print_r($response, true));
-                $err = $response->out->erros;
+                $err = (array)$response->out->erros;
                 if (!empty($err)) {
-                    throw new Exception((string)$err);
+                    throw new Exception(print_r($err, true));
                 }
             } catch (Exception $e) {
                 $error->setErrorMessage($e->getMessage());

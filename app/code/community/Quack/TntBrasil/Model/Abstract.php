@@ -253,7 +253,7 @@ abstract class Quack_TntBrasil_Model_Abstract extends Mage_Shipping_Model_Carrie
     {
         $progress = array();
         $finalStep = array();
-        $trackings = $response->out;
+        $trackings = array($response->out);
         
         foreach ($trackings as $track) {
             $progress[] = $this->_getTrackingProgressDetails($track);
