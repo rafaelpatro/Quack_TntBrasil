@@ -307,7 +307,7 @@ abstract class Quack_TntBrasil_Model_Abstract extends Mage_Shipping_Model_Carrie
     {
         $tpServico = new Quack_TntBrasil_Model_Source_TransportType();
         $name = $tpServico->getOptionText($item->getRequest()->getTpServico());
-        $companyTime = $item->getResponse()->getOut()->getPrazoEntrega();
+        $companyTime = (int)$item->getResponse()->getOut()->prazoEntrega;
         $postingTime = $this->getPostingTime();
         $finalTime = $companyTime + $postingTime;
         $startTime = $companyTime + ceil($postingTime/2);
@@ -402,6 +402,7 @@ abstract class Quack_TntBrasil_Model_Abstract extends Mage_Shipping_Model_Carrie
             $item = Mage::getModel('tntbrasil/rate');
             $item->setRequest($quote);
             if ($item->sendRequest($this->getConfigData('url'))) {
+                $item->setMethodType($method);
                 $collection->addItem($item);
             }
         }

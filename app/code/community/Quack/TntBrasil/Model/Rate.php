@@ -158,19 +158,24 @@ class Quack_TntBrasil_Model_Rate extends Varien_Object
             }
             
             try {
-                $ws = new TntMercurio_CalculoFrete(array('connection_timeout' => $configTimeout), $url);
+                $ws = new TntMercurio_CalculoFrete(array(
+                    'connection_timeout' => $configTimeout,
+                    'cache_wsdl' => 0,
+                    'trace' => true,
+                ), $url);
                 $response = $ws->calculaFrete(new TntMercurio_CalculaFrete($this->getRequest()));
                 $this->setDefaultTimeout($defaultTimeout);
                 
                 if ($out = $response->getOut()) {
-                    $errors = (array) $out->getErrorList();
-                    if (!empty($errors)) {
-                        $this->setResponse($response);
-                        return true;
-                    }
+                    $this->setResponse($response);
+                    return true;
                 }
             } catch (Exception $e) {
                 Mage::log($e->getMessage());
+                if (isset($ws)) {
+                    Mage::log($ws->__getLastRequest());
+                }
+                
                 return false;
             }
         

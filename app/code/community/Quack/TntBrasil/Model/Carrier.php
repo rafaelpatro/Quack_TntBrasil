@@ -75,14 +75,14 @@ class Quack_TntBrasil_Model_Carrier extends Quack_TntBrasil_Model_Abstract
             $errors = null;
             if ($item->getResponse()) {
                 $out = $item->getResponse()->getOut();
-                $errors = (array) $out->getErrorList();
+                $errors = isset($out->errorList) ? (array) $out->errorList : array();
             }
             if (empty($errors)) {
                 $method = $this->getRateResultMethod();
-                $method->setMethod("{$this->getCarrierCode()}_{$item->getRequest()->getTpServico()}");
+                $method->setMethod("{$this->getCarrierCode()}_{$item->getMethodType()}");
                 $method->setMethodTitle($this->getMethodTitle($item));
-                $method->setPrice($this->getFinalPriceWithHandlingFee($out->getVlTotalFrete()));
-                $method->setCost($out->getVlTotalFrete());
+                $method->setPrice($this->getFinalPriceWithHandlingFee($out->vlTotalFrete));
+                $method->setCost($out->vlTotalFrete);
             } else {
                 Mage::logException(Mage::exception('Mage_Core', print_r($errors, true)));
                 $method = $this->getRateResultError();
